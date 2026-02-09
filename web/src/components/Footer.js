@@ -8,16 +8,16 @@ import { motion } from 'framer-motion';
 const FloatingParticle = ({ delay, x, y }) => (
   <motion.div
     initial={{ opacity: 0, y: 0 }}
-    animate={{ 
-      opacity: [0.1, 0.3, 0.1], 
+    animate={{
+      opacity: [0.1, 0.3, 0.1],
       y: [0, -20, 0],
       x: [0, 10, 0]
     }}
-    transition={{ 
-      duration: 5, 
-      repeat: Infinity, 
+    transition={{
+      duration: 5,
+      repeat: Infinity,
       delay: delay,
-      ease: "easeInOut" 
+      ease: "easeInOut"
     }}
     style={{
       position: 'absolute',
@@ -35,7 +35,7 @@ const FloatingParticle = ({ delay, x, y }) => (
 const Footer = () => {
   return (
     <footer style={{ backgroundColor: '#2C1B18', color: '#EDE0D4', padding: '5rem 2rem 3rem 2rem', borderTop: '5px solid #D4AF37', position: 'relative', overflow: 'hidden' }}>
-      
+
       {/* Floating Particles for "Magic" */}
       <FloatingParticle delay={0} x="10%" y="20%" />
       <FloatingParticle delay={2} x="80%" y="10%" />
@@ -45,16 +45,16 @@ const Footer = () => {
 
       {/* Main Grid */}
       <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '4rem', position: 'relative', zIndex: 1 }}>
-        
+
         {/* Brand - Logo Replacement */}
         <div>
           <div style={{ position: 'relative', width: '200px', height: '80px', marginBottom: '1rem' }}>
-             <Image 
-               src="/images/Logoblanco-300x112.png" 
-               alt="Pueblito Caribeño" 
-               fill 
-               style={{ objectFit: 'contain', objectPosition: 'left' }} 
-             />
+            <Image
+              src="/images/Logoblanco-300x112.png"
+              alt="Pueblito Caribeño"
+              fill
+              style={{ objectFit: 'contain', objectPosition: 'left' }}
+            />
           </div>
           <p style={{ lineHeight: '1.8', opacity: 0.8, fontSize: '1rem' }}>
             Arquitectura con alma, espacios con historia. Un estilo de vida donde la tradición abraza el confort moderno.
@@ -63,7 +63,7 @@ const Footer = () => {
 
         {/* Navigation - Corrected Links */}
         <div style={{ paddingLeft: '2rem', borderLeft: '1px solid rgba(255,255,255,0.1)' }}>
-          <h4 style={{ color: '#D4AF37', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem' }}>Navegación</h4>
+          <h4 style={{ fontFamily: 'var(--font-body)', color: '#D4AF37', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontWeight: '700' }}>Navegación</h4>
           <ul style={{ listStyle: 'none', padding: 0, display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <li><Link href="/" style={{ textDecoration: 'none', color: 'inherit', transition: 'color 0.2s', fontSize: '1.05rem' }}>Inicio</Link></li>
             <li><Link href="/living-in-pueblito" style={{ textDecoration: 'none', color: 'inherit', transition: 'color 0.2s', fontSize: '1.05rem' }}>Vivir en Pueblito</Link></li>
@@ -75,26 +75,26 @@ const Footer = () => {
 
         {/* Contact & Newsletter */}
         <div>
-          <h4 style={{ color: '#D4AF37', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem' }}>Contacto</h4>
+          <h4 style={{ fontFamily: 'var(--font-body)', color: '#D4AF37', marginBottom: '1.5rem', textTransform: 'uppercase', letterSpacing: '2px', fontSize: '0.9rem', fontWeight: '700' }}>Contacto</h4>
           <p style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span style={{ color: '#D4AF37' }}>📍</span> Punta Cana, República Dominicana
           </p>
           <p style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-             <span style={{ color: '#D4AF37' }}>✉️</span> info@pueblitocaribeno.com
+            <span style={{ color: '#D4AF37' }}>✉️</span> info@pueblitocaribeno.com
           </p>
 
           <form style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
-            <input 
-              type="email" 
-              placeholder="Suscríbete al boletín" 
-              style={{ 
-                background: 'rgba(255,255,255,0.05)', 
-                border: '1px solid rgba(255,255,255,0.2)', 
-                padding: '0.8rem', 
+            <input
+              type="email"
+              placeholder="Suscríbete al boletín"
+              style={{
+                background: 'rgba(255,255,255,0.05)',
+                border: '1px solid rgba(255,255,255,0.2)',
+                padding: '0.8rem',
                 color: 'white',
                 borderRadius: '4px',
                 width: '100%'
-              }} 
+              }}
             />
             <button style={{ background: '#D4AF37', color: '#2C1B18', border: 'none', padding: '0 1.5rem', fontWeight: 'bold', borderRadius: '4px', cursor: 'pointer' }}>OK</button>
           </form>

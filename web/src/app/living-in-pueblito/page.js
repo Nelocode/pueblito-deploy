@@ -42,13 +42,13 @@ export default function LivingPage() {
     {
       title: "Supermercado La Sirena",
       desc: "Cadena de supermercados líder en República Dominicana, ofreciendo frescura, calidad y precios competitivos para toda la comunidad.",
-      img: "/images/amenities/supermercado_sirena.jpg",
+      img: "/images/amenities/la_sirena_new.jpg",
       mapQuery: "Supermercado La Sirena Vistacana"
     },
     {
       title: "Ashton School",
       desc: "Institución educativa bilingüe de primer nivel, formando líderes con valores y excelencia académica dentro de un campus seguro.",
-      img: "/images/amenities/ashton_school.jpg",
+      img: "/images/amenities/ashton_school_new.jpg",
       mapQuery: "Ashton School Vistacana"
     },
     {
@@ -183,7 +183,7 @@ export default function LivingPage() {
                 <div style={{ position: 'relative', height: '300px', marginBottom: '1rem', borderRadius: '4px', overflow: 'hidden' }}>
                   <Image src={city.img} alt={city.name} fill style={{ objectFit: 'cover' }} />
                 </div>
-                <h3 style={{ color: city.color, fontSize: '1.35rem', fontWeight: '700', marginBottom: '0.2rem' }}>{city.name}</h3>
+                <h3 style={{ fontFamily: 'var(--font-body)', color: city.color, fontSize: '1.2rem', fontWeight: '700', marginBottom: '0.2rem' }}>{city.name}</h3>
                 <p style={{ color: '#666', fontSize: '1rem' }}>{city.country}</p>
               </motion.div>
             ))}
@@ -296,7 +296,7 @@ export default function LivingPage() {
                     </div>
                   </div>
 
-                  <h3 style={{ fontSize: '3.5rem', fontWeight: '400', fontFamily: 'var(--font-heading)', lineHeight: '1.2', marginBottom: '1.5rem', color: 'white' }}>{item.title}</h3>
+                  <h3 style={{ fontSize: '2.5rem', fontWeight: '700', fontFamily: 'var(--font-body)', lineHeight: '1.2', marginBottom: '1.5rem', color: 'white' }}>{item.title}</h3>
                   <p style={{ fontSize: '1.25rem', lineHeight: '1.8', color: 'rgba(255,255,255,0.9)', marginBottom: '3rem', maxWidth: '500px' }}>{item.desc}</p>
 
                   {/* Action Buttons: White style */}

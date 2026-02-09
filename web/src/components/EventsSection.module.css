@@ -203,8 +203,9 @@
 .cardFooter h3 {
   color: white !important;
   text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8);
-  font-family: var(--font-heading);
-  font-size: 2rem;
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 700;
   margin: 0;
   line-height: 1.2;
 }
@@ -279,8 +280,9 @@
 }
 
 .modalTitle {
-  font-family: var(--font-heading);
-  font-size: 2.5rem;
+  font-family: var(--font-body);
+  font-size: 2rem;
+  font-weight: 700;
   color: var(--primary);
   margin: 0;
   line-height: 1.1;

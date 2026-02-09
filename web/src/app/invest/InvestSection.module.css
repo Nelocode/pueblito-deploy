@@ -65,8 +65,9 @@
 }
 
 .title {
-    font-family: var(--font-heading);
-    font-size: 3rem;
+    font-family: var(--font-body);
+    font-size: 2rem;
+    font-weight: 700;
     margin-bottom: 2rem;
     color: white;
     border-bottom: 1px solid rgba(255, 255, 255, 0.3);
@@ -274,6 +275,7 @@
 }
 
 .deliveryInfo h3 {
+    font-family: var(--font-body);
     font-size: 1rem;
     text-transform: uppercase;
     color: var(--primary);
@@ -283,7 +285,8 @@
 }
 
 .deliveryDate {
-    font-size: 2.5rem;
+    font-family: var(--font-body);
+    font-size: 2rem;
     font-weight: 700;
     color: var(--primary);
 }

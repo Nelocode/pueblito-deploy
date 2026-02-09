@@ -18,7 +18,7 @@ const SalesSection = () => {
         <div className={styles.categoryCard}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/APARTAMENTO-TIPICO-1.png"
+              src="/images/amenities/construidas_new.jpg"
               alt="Unidades Terminadas"
               fill
               style={{ objectFit: 'cover' }}
