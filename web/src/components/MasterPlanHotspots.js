@@ -61,7 +61,7 @@ export default function MasterPlanHotspots() {
                         {/* Custom SVG Overlay for the Pueblito Caribeño area highlighting */}
                         <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 3 }}>
                             <path
-                                d="M 30.5 54 L 35 55.6 L 40.5 57 C 41.5 57.5 41 58.5 40 59.5 L 38 60.5 L 29.8 56.8 Z"
+                                d="M 28 47 L 38 49.5 C 41 50.5 43 51.5 42 54.5 L 40.5 58 C 39 59.5 35 60 31.5 59 L 28 57.5 C 25 56 25 50 28 47 Z"
                                 fill="rgba(244, 67, 54, 0.6)"
                                 stroke="rgba(244, 67, 54, 0.8)"
                                 strokeWidth="2px"
