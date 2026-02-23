@@ -5,19 +5,27 @@ import Image from 'next/image';
 import styles from './MasterPlanHotspots.module.css';
 
 const spots = [
-    { id: 'ashton', title: "ASHTON\nSCHOOL", x: 26, y: 25, cardX: 5, cardY: 20, image: "/images/master-plan/Ashton School.jpg", labelPos: 'left' },
-    { id: 'centro-dep', title: "CENTRO\nDEPORTIVO", x: 48, y: 38, cardX: 45, cardY: -5, image: "/images/master-plan/Centro Deportivo.jpg", labelPos: 'left' },
-    { id: 'la-sirena', title: "LA\nSIRENA", x: 65, y: 31, cardX: 63, cardY: 5, image: "/images/La-sirena.jpg", labelPos: 'left' },
-    { id: 'golds-gym', title: "GOLD'S\nGYM", x: 77, y: 29, cardX: 95, cardY: 30, image: "/images/master-plan/Casa Club.jpg", labelPos: 'right' },
-    { id: 'business-center', title: "BUSSINES\nCENTER", x: 74, y: 37, cardX: 95, cardY: 60, image: "/images/master-plan/La Nube.jpg", labelPos: 'right' },
-    { id: 'golf', title: "CAMPO\nDE GOLF", x: 60, y: 55, cardX: 85, cardY: 85, image: "/images/master-plan/La isla.jpg", labelPos: 'right' },
-    { id: 'pueblito', title: "", x: 37, y: 62, cardX: 65, cardY: 100, image: "/images/Logoblanco.png", labelPos: 'none', isLogo: true },
-    { id: 'parque', title: "PARQUE\nPASEO\nDEL\nSENDERO", x: 35, y: 75, cardX: 5, cardY: 85, image: "/images/master-plan/Parque Paseo del Sendero.jpg", labelPos: 'left' }
+    { id: 'ashton', title: "ASHTON\nSCHOOL", x: 23.8, y: 21.4, cardX: 5, cardY: 20, image: "/images/master-plan/Ashton School.jpg", labelPos: 'left' },
+    { id: 'centro-dep', title: "CENTRO\nDEPORTIVO", x: 51.9, y: 40.7, cardX: 45, cardY: -5, image: "/images/master-plan/Centro Deportivo.jpg", labelPos: 'left' },
+    { id: 'la-sirena', title: "LA\nSIRENA", x: 85.7, y: 20.2, cardX: 63, cardY: 5, image: "/images/La-sirena.jpg", labelPos: 'left' },
+    { id: 'golds-gym', title: "GOLD'S\nGYM", x: 93.1, y: 20.2, cardX: 98, cardY: 5, image: "/images/master-plan/Casa Club.jpg", labelPos: 'right' },
+    { id: 'business-center', title: "BUSSINES\nCENTER", x: 91.3, y: 20.5, cardX: 95, cardY: 60, image: "/images/master-plan/La Nube.jpg", labelPos: 'right' },
+    { id: 'golf', title: "CAMPO\nDE GOLF", x: 52.6, y: 61.5, cardX: 85, cardY: 85, image: "/images/master-plan/La isla.jpg", labelPos: 'right' },
+    { id: 'pueblito', title: "", x: 36.6, y: 56.1, cardX: 65, cardY: 100, image: "/images/Logoblanco.png", labelPos: 'none', isLogo: true },
+    { id: 'parque', title: "PARQUE\nPASEO\nDEL\nSENDERO", x: 37.9, y: 62.0, cardX: 5, cardY: 85, image: "/images/master-plan/Parque Paseo del Sendero.jpg", labelPos: 'left' }
 ];
 
 export default function MasterPlanHotspots() {
     const [hoveredId, setHoveredId] = useState(null);
+    const [devCoords, setDevCoords] = useState(null);
     const cardsWrapperRef = useRef(null);
+
+    const handleMapClick = (e) => {
+        const rect = e.currentTarget.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+        const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+        setDevCoords({ x, y });
+    };
 
     const handlePinClick = (id) => {
         setHoveredId(id);
@@ -49,9 +57,14 @@ export default function MasterPlanHotspots() {
 
                 {/* CENTER MAP COLUMN */}
                 <div className={styles.mapSection}>
-                    <div className={styles.mapWrapper}>
+                    <div className={styles.mapWrapper} onClick={handleMapClick}>
+                        {devCoords && (
+                            <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px 15px', zIndex: 100, borderRadius: '8px', fontSize: '16px', fontWeight: 'bold' }}>
+                                X: {devCoords.x}, Y: {devCoords.y}
+                            </div>
+                        )}
                         <Image
-                            src="/images/master-plan/Base.png"
+                            src="/images/master-plan/mapa_actualizado.jpg"
                             alt="Mapa Master Plan Vistacana"
                             fill
                             className={styles.mapImage}
@@ -61,14 +74,24 @@ export default function MasterPlanHotspots() {
                         {/* SVG Connecting Lines (Hidden on mobile via CSS) */}
                         <svg className={styles.svgOverlay}>
                             {spots.map((spot) => (
-                                <line
-                                    key={`line-${spot.id}`}
-                                    x1={`${spot.x}%`}
-                                    y1={`${spot.y}%`}
-                                    x2={`${spot.cardX}%`}
-                                    y2={`${spot.cardY}%`}
-                                    className={`${styles.connectionLine} ${hoveredId === spot.id ? styles.lineActive : ''}`}
-                                />
+                                <g key={`g-${spot.id}`}>
+                                    <line
+                                        x1={`${spot.x}%`}
+                                        y1={`${spot.y}%`}
+                                        x2={`${spot.cardX}%`}
+                                        y2={`${spot.cardY}%`}
+                                        className={`${styles.connectionLine} ${hoveredId === spot.id ? styles.lineActive : ''}`}
+                                    />
+                                    {spot.isLogo && (
+                                        <circle
+                                            cx={`${spot.x}%`}
+                                            cy={`${spot.y}%`}
+                                            r="8"
+                                            fill="#d32f2f"
+                                            className={styles.pulsingCircle}
+                                        />
+                                    )}
+                                </g>
                             ))}
                         </svg>
 

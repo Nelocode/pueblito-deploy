@@ -30,8 +30,8 @@
 .mapWrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 76.8%;
-    /* Exact aspect ratio of Base.png (1815 / 2364) */
+    padding-bottom: 72.2%;
+    /* Exact aspect ratio of new map image (1941 / 2688) */
     background-color: transparent;
 }
 
@@ -124,7 +124,9 @@
     background-color: #4a779b;
     border: 4px solid #fff;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .cardActive .cardImageWrapper {
@@ -137,6 +139,7 @@
 
 .logoImage {
     object-fit: contain;
+    transform: scale(0.65);
 }
 
 .cardContent {
