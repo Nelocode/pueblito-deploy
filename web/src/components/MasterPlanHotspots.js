@@ -58,19 +58,17 @@ export default function MasterPlanHotspots() {
                             priority
                             sizes="(max-width: 850px) 100vw, 70vw"
                         />
-                        {/* Red overlay block for Pueblito Caribeño instead of a pulsing circle */}
-                        <div style={{
-                            position: 'absolute',
-                            left: '37%',
-                            top: '56.5%',
-                            width: '12%',
-                            height: '5.5%',
-                            backgroundColor: 'rgba(211, 47, 47, 0.45)', // #d32f2f matching Red
-                            borderRadius: '12px',
-                            transform: 'translate(-50%, -50%) rotate(24deg)',
-                            pointerEvents: 'none',
-                            zIndex: 3
-                        }}></div>
+                        {/* Custom SVG Overlay for the Pueblito Caribeño area highlighting */}
+                        <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', pointerEvents: 'none', zIndex: 3 }}>
+                            <path
+                                d="M 30.5 54 L 35 55.6 L 40.5 57 C 41.5 57.5 41 58.5 40 59.5 L 38 60.5 L 29.8 56.8 Z"
+                                fill="rgba(244, 67, 54, 0.6)"
+                                stroke="rgba(244, 67, 54, 0.8)"
+                                strokeWidth="2px"
+                                vectorEffect="non-scaling-stroke"
+                                strokeLinejoin="round"
+                            />
+                        </svg>
 
                         {/* SVG Connecting Lines (Hidden on mobile via CSS) */}
                         <svg className={styles.svgOverlay}>
