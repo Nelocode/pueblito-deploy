@@ -17,15 +17,7 @@ const spots = [
 
 export default function MasterPlanHotspots() {
     const [hoveredId, setHoveredId] = useState(null);
-    const [devCoords, setDevCoords] = useState(null);
     const cardsWrapperRef = useRef(null);
-
-    const handleMapClick = (e) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-        const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-        setDevCoords({ x, y });
-    };
 
     const handlePinClick = (id) => {
         setHoveredId(id);
@@ -57,12 +49,7 @@ export default function MasterPlanHotspots() {
 
                 {/* CENTER MAP COLUMN */}
                 <div className={styles.mapSection}>
-                    <div className={styles.mapWrapper} onClick={handleMapClick}>
-                        {devCoords && (
-                            <div style={{ position: 'absolute', top: 10, left: 10, background: 'rgba(0,0,0,0.8)', color: 'white', padding: '10px 15px', zIndex: 100, borderRadius: '8px', fontSize: '16px', fontWeight: 'bold' }}>
-                                X: {devCoords.x}, Y: {devCoords.y}
-                            </div>
-                        )}
+                    <div className={styles.mapWrapper}>
                         <Image
                             src="/images/master-plan/mapa_actualizado.jpg"
                             alt="Mapa Master Plan Vistacana"
