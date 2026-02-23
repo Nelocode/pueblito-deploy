@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './MasterPlanHotspots.module.css';
 
@@ -8,9 +8,9 @@ import styles from './MasterPlanHotspots.module.css';
 // If cardX/cardY are present, a card is rendered. Otherwise, just a pin with a label.
 const spots = [
     // --- Left Side ---
-    { id: 'golf-1', title: "Campo de Golf", subtitle: "De 9 hoyos Par 3", x: 19, y: 35, cardX: 5, cardY: 10, image: "/images/master-plan/La isla.jpg", desc: "De 9 hoyos Par 3" },
-    { id: 'parque', title: "Parque Paseo del Sendero", x: 35, y: 75, cardX: 5, cardY: 45, image: "/images/master-plan/Parque Paseo del Sendero.jpg", desc: "" },
-    { id: 'isla', title: "La Isla", subtitle: "Club de Pesca, café y bar", x: 60, y: 40, cardX: 5, cardY: 77, image: "/images/master-plan/La isla.jpg", desc: "Club de Pesca, café y bar" },
+    { id: 'golf-1', title: "Campo de Golf", subtitle: "De 9 hoyos Par 3", x: 19, y: 35, cardX: 2, cardY: 5, image: "/images/master-plan/La isla.jpg", desc: "De 9 hoyos Par 3" },
+    { id: 'parque', title: "Parque Paseo del Sendero", x: 35, y: 75, cardX: 6, cardY: 28, image: "/images/master-plan/Parque Paseo del Sendero.jpg", desc: "" },
+    { id: 'isla', title: "La Isla", subtitle: "Club de Pesca, café y bar", x: 60, y: 40, cardX: 2, cardY: 58, image: "/images/master-plan/La isla.jpg", desc: "Club de Pesca, café y bar" },
 
     // Pins without cards (Labels only, exactly like reference)
     { id: 'acceso-serv', title: "Acceso Servicio", x: 26, y: 36 },
@@ -24,14 +24,14 @@ const spots = [
     { id: 'campo-golf-ref', title: "Campo de Golf", x: 50, y: 60 },
 
     // --- Right Side ---
-    { id: 'nube', title: "La Nube", subtitle: "Plaza Comercial y de entretenimiento", x: 75, y: 50, cardX: 80, cardY: 5, image: "/images/master-plan/La Nube.jpg", desc: "Plaza Comercial y de entretenimiento" },
-    { id: 'playa-art', title: "Playa artificial", subtitle: "Playa privada, cómoda, segura y con excelente servicio", x: 65, y: 35, cardX: 80, cardY: 30, image: "/images/master-plan/Playa Artificial.jpg", desc: "Playa privada, cómoda, segura y con excelente servicio" },
-    { id: 'piscinas', title: "Piscinas Club House", x: 61, y: 35, cardX: 80, cardY: 55, image: "/images/master-plan/Casa Club.jpg", desc: "" },
-    { id: 'club-dep', title: "Club Deportivo", subtitle: "Canchas de fútbol, pádel, tenis, entre otros.", x: 55, y: 65, cardX: 80, cardY: 80, image: "/images/master-plan/Centro Deportivo.jpg", desc: "Canchas de fútbol, pádel, tenis, entre otros." },
+    { id: 'nube', title: "La Nube", subtitle: "Plaza Comercial y de entretenimiento", x: 75, y: 50, cardX: 73, cardY: 5, image: "/images/master-plan/La Nube.jpg", desc: "Plaza Comercial y de entretenimiento" },
+    { id: 'playa-art', title: "Playa artificial", subtitle: "Playa privada, cómoda, segura y con excelente servicio", x: 65, y: 35, cardX: 84, cardY: 23, image: "/images/master-plan/Playa Artificial.jpg", desc: "Playa privada, cómoda, segura y con excelente servicio" },
+    { id: 'piscinas', title: "Piscinas Club House", x: 61, y: 35, cardX: 73, cardY: 52, image: "/images/master-plan/Casa Club.jpg", desc: "" },
+    { id: 'club-dep', title: "Club Deportivo", subtitle: "Canchas de fútbol, pádel, tenis, entre otros.", x: 55, y: 65, cardX: 84, cardY: 70, image: "/images/master-plan/Centro Deportivo.jpg", desc: "Canchas de fútbol, pádel, tenis, entre otros." },
 
     // Cards floating at bottom or alternate spots
-    { id: 'ashton-card', title: "International Ashton School", x: 35, y: 20, cardX: 20, cardY: 80, image: "/images/master-plan/Ashton School.jpg", desc: "" }, // Pin shares coord with ashton-pin roughly
-    { id: 'restaurantes', title: "Restaurantes", subtitle: "3 opciones gastronómicas al frente al Lago interno", x: 67, y: 38, cardX: 62, cardY: 80, image: "/images/master-plan/Yaque Bar.jpg", desc: "3 opciones gastronómicas al frente al Lago interno" },
+    { id: 'ashton-card', title: "International Ashton School", x: 35, y: 20, cardX: 13, cardY: 76, image: "/images/master-plan/Ashton School.jpg", desc: "" }, // Pin shares coord with ashton-pin roughly
+    { id: 'restaurantes', title: "Restaurantes", subtitle: "3 opciones gastronómicas al frente al Lago interno", x: 67, y: 38, cardX: 58, cardY: 82, image: "/images/master-plan/Yaque Bar.jpg", desc: "3 opciones gastronómicas al frente al Lago interno" },
 
     // Pins without cards right side
     { id: 'comp-dep', title: "Complejo Deportivo", x: 51, y: 21 },
@@ -44,6 +44,31 @@ const spots = [
 
 export default function MasterPlanHotspots() {
     const [hoveredId, setHoveredId] = useState(null);
+    const cardsWrapperRef = useRef(null);
+
+    const handlePinClick = (id) => {
+        setHoveredId(id);
+
+        // On mobile, scroll the corresponding card into view if it exists
+        if (window.innerWidth <= 850 && cardsWrapperRef.current) {
+            const cardElement = document.getElementById(`card-${id}`);
+            if (cardElement) {
+                // Determine the wrapper's left scroll position to align the card to the center/start
+                const wrapper = cardsWrapperRef.current;
+                const cardRect = cardElement.getBoundingClientRect();
+                const wrapperRect = wrapper.getBoundingClientRect();
+
+                // Calculate scroll position to center the card. 
+                // scrollLeft + card's left offset relative to wrapper - (wrapper width/2) + (card width/2)
+                const scrollLeftPos = wrapper.scrollLeft + (cardRect.left - wrapperRect.left) - (wrapperRect.width / 2) + (cardRect.width / 2);
+
+                wrapper.scrollTo({
+                    left: scrollLeftPos,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    };
 
     return (
         <div className={styles.container}>
@@ -69,7 +94,7 @@ export default function MasterPlanHotspots() {
                                 style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
                                 onMouseEnter={() => setHoveredId(spot.id)}
                                 onMouseLeave={() => setHoveredId(null)}
-                                onClick={() => setHoveredId(spot.id)}
+                                onClick={() => handlePinClick(spot.id)}
                             >
                                 <div className={styles.pinInner}></div>
                                 <div className={styles.pinLabel}>{spot.title}</div>
@@ -78,35 +103,38 @@ export default function MasterPlanHotspots() {
                     </div>
                 </div>
 
-                {/* SCATTERED CARDS */}
-                {spots.filter(spot => spot.cardX !== undefined && spot.cardY !== undefined).map((spot) => (
-                    <div
-                        key={`card-${spot.id}`}
-                        className={`${styles.card} ${hoveredId === spot.id ? styles.cardActive : ''}`}
-                        style={{ left: `${spot.cardX}%`, top: `${spot.cardY}%` }}
-                        onMouseEnter={() => setHoveredId(spot.id)}
-                        onMouseLeave={() => setHoveredId(null)}
-                        onClick={() => setHoveredId(spot.id)}
-                    >
-                        <div className={styles.cardImageWrapper}>
-                            {spot.image && (
-                                <Image
-                                    src={spot.image}
-                                    alt={spot.title}
-                                    fill
-                                    className={styles.cardImage}
-                                    sizes="(max-width: 850px) 320px, 220px"
-                                />
-                            )}
+                {/* SCATTERED CARDS WRAPPER FOR MOBILE CAROUSEL */}
+                <div className={styles.cardsWrapper} ref={cardsWrapperRef}>
+                    {spots.filter(spot => spot.cardX !== undefined && spot.cardY !== undefined).map((spot) => (
+                        <div
+                            key={`card-${spot.id}`}
+                            id={`card-${spot.id}`}
+                            className={`${styles.card} ${hoveredId === spot.id ? styles.cardActive : ''}`}
+                            style={{ '--desktop-left': `${spot.cardX}%`, '--desktop-top': `${spot.cardY}%` }}
+                            onMouseEnter={() => setHoveredId(spot.id)}
+                            onMouseLeave={() => setHoveredId(null)}
+                            onClick={() => handlePinClick(spot.id)}
+                        >
+                            <div className={styles.cardImageWrapper}>
+                                {spot.image && (
+                                    <Image
+                                        src={spot.image}
+                                        alt={spot.title}
+                                        fill
+                                        className={styles.cardImage}
+                                        sizes="(max-width: 850px) 320px, 220px"
+                                    />
+                                )}
+                            </div>
+                            <div className={styles.cardContent}>
+                                <h3 className={styles.cardTitle}>{spot.title}</h3>
+                                {(spot.desc || spot.subtitle) && (
+                                    <p className={styles.cardDesc}>{spot.subtitle || spot.desc}</p>
+                                )}
+                            </div>
                         </div>
-                        <div className={styles.cardContent}>
-                            <h3 className={styles.cardTitle}>{spot.title}</h3>
-                            {(spot.desc || spot.subtitle) && (
-                                <p className={styles.cardDesc}>{spot.subtitle || spot.desc}</p>
-                            )}
-                        </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
 
             </div>
         </div>
