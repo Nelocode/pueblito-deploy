@@ -1,39 +1,114 @@
-/* Container for the entire map component */
 .container {
-    position: relative;
     width: 100%;
     max-width: 1400px;
     margin: 0 auto;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-    background-color: #E8F5E9;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 20px;
+    background-color: #fcfcfc;
 }
 
-/* Aspect ratio wrapper for the map image */
+/* SCATTER LAYOUT CONTAINER */
+.scatterContainer {
+    position: relative;
+    width: 100%;
+    min-height: 800px;
+    /* Base height for desktop scatter */
+}
+
+/* MAP SECTION */
+.mapSection {
+    position: absolute;
+    width: 60%;
+    left: 20%;
+    top: 50px;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .mapWrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 75%;
-    /* Aspect ratio of the Base.png roughly */
-    background-color: #f0f0f0;
+    padding-bottom: 70%;
+    background-color: transparent;
 }
 
-/* The map image itself */
 .mapImage {
-    object-fit: cover;
-    display: block;
+    object-fit: contain;
 }
 
-/* Interactive Pin Buttons */
+/* CARDS */
+.card {
+    position: absolute;
+    /* Scattered position in desktop */
+    background: #fff;
+    border: 1px solid #333;
+    /* Thin dark border like reference */
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    box-shadow: none;
+    /* Flat look like reference */
+    width: 140px;
+    /* Much narrower for the pronounced tall/elongated look */
+    padding: 10px;
+    /* Creates the prominent white frame around image and text */
+    z-index: 5;
+    display: flex;
+    flex-direction: column;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 15;
+}
+
+.cardActive {
+    border-color: #E67E22;
+    z-index: 20;
+}
+
+.cardImageWrapper {
+    position: relative;
+    width: 100%;
+    height: 90px;
+    /* Proportional to the narrow width */
+}
+
+.cardImage {
+    object-fit: cover;
+}
+
+.cardContent {
+    padding: 10px 0 0 0;
+    /* Only top padding to separate text from image */
+    background: #fff;
+    text-align: left;
+}
+
+.cardTitle {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #1B365D;
+    margin-bottom: 2px;
+}
+
+.cardDesc {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    color: #888;
+    line-height: 1.2;
+}
+
+/* PINS */
 .pin {
     position: absolute;
-    width: 32px;
-    height: 32px;
-    margin-left: -16px;
-    /* Center the pin on coordinates */
-    margin-top: -16px;
+    width: 12px;
+    height: 12px;
+    margin-left: -6px;
+    margin-top: -6px;
     cursor: pointer;
     border: none;
     background: transparent;
@@ -41,243 +116,105 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transform-origin: center;
     transition: transform 0.2s ease;
 }
 
 .pin:hover {
-    transform: scale(1.2);
+    transform: scale(1.5);
     z-index: 20;
 }
 
-/* Pulsing effect */
-.pulse {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #E65100;
-    opacity: 0.7;
-    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+.pinActive {
+    transform: scale(2);
+    z-index: 30;
 }
 
-@keyframes ping {
-
-    75%,
-    100% {
-        transform: scale(2);
-        opacity: 0;
-    }
-}
-
-/* The inner visible circle of the pin */
 .pinInner {
-    position: relative;
     width: 100%;
     height: 100%;
     border-radius: 50%;
+    background-color: #E3000F;
     border: 2px solid white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-weight: bold;
-    font-size: 16px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* Categories Colors */
-.restaurant .pinInner {
-    background-color: #E67E22;
-}
-
-.amenity .pinInner {
-    background-color: #27AE60;
-}
-
-.project .pinInner {
-    background-color: #2980B9;
-}
-
-.entrance .pinInner {
-    background-color: #D35400;
-}
-
-/* Tooltip (Desktop) */
-.tooltip {
+.pinLabel {
     position: absolute;
-    bottom: 100%;
+    top: -20px;
     left: 50%;
     transform: translateX(-50%);
-    margin-bottom: 8px;
-    padding: 4px 8px;
-    background-color: white;
-    color: #333;
-    font-size: 12px;
-    font-weight: bold;
+    background: white;
+    color: #1B365D;
+    padding: 2px 6px;
     border-radius: 4px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    font-size: 10px;
+    font-weight: bold;
     white-space: nowrap;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.2s;
-    z-index: 30;
-    font-family: var(--font-body);
+    z-index: 40;
 }
 
-.pin:hover .tooltip {
+.pin:hover .pinLabel,
+.pinActive .pinLabel {
     opacity: 1;
 }
 
-/* Modal Overlay */
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.7);
-    z-index: 9998;
-    display: flex;
-    /* Always flex to center */
-    align-items: center;
-    justify-content: center;
-    backdrop-filter: blur(5px);
-    padding: 20px;
+/* Responsive Rules */
+@media (max-width: 1200px) {
+    .mapSection {
+        width: 70%;
+        left: 15%;
+    }
 }
 
-/* Card Content */
-.card {
-    position: relative;
-    background: white;
-    width: 100%;
-    max-width: 600px;
-    min-height: 300px;
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-    display: flex;
-    flex-direction: column;
-    z-index: 9999;
-}
-
-.cardImages {
-    position: relative;
-    width: 100%;
-    height: 250px;
-    background: #eee;
-}
-
-.cardContent {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-}
-
-.cardTitle {
-    font-family: var(--font-body);
-    font-weight: 700;
-    font-size: 1.8rem;
-    color: var(--primary);
-    margin-bottom: 0.5rem;
-}
-
-.cardDesc {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    color: #555;
-    line-height: 1.6;
-}
-
-.closeButton {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    z-index: 20;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #333;
-}
-
-/* Legend */
-.legend {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background: rgba(255, 255, 255, 0.9);
-    padding: 10px 15px;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    font-size: 0.8rem;
-    font-family: var(--font-body);
-    pointer-events: none;
-    display: block;
-}
-
-.legendItem {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 4px;
-}
-
-.legendDot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-}
-
-/* Responsive */
-@media (min-width: 768px) {
+@media (max-width: 1024px) {
     .card {
-        flex-direction: row;
-        height: auto;
-        max-height: 500px;
-    }
-
-    .cardImages {
-        width: 50%;
-        height: auto;
-        min-height: 100%;
-    }
-
-    .cardContent {
-        width: 50%;
-        justify-content: center;
+        width: 180px;
     }
 }
 
-@media (max-width: 600px) {
-    .legend {
-        display: none;
-        /* Hide legend on small screens to avoid clutter */
+@media (max-width: 850px) {
+    .container {
+        overflow-x: auto;
+        padding: 10px 0;
+        /* Less padding to maximize view */
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scroll on iOS */
     }
 
-    .pin {
-        width: 24px;
-        height: 24px;
-        margin-left: -12px;
-        margin-top: -12px;
+    .scatterContainer {
+        min-width: 800px;
+        /* Force desktop-like width so layout doesn't break */
+        min-height: 600px;
+        position: relative;
+        margin: 0 auto;
+    }
+
+    .mapSection {
+        width: 65%;
+        left: 17.5%;
+        top: 20px;
+        position: absolute;
     }
 
     .card {
-        max-height: 80vh;
-        overflow-y: auto;
+        width: 120px;
+        /* Slightly scaled down but still perfectly readable */
+        padding: 8px;
     }
 
-    .cardImages {
-        height: 200px;
+    .cardImageWrapper {
+        height: 80px;
+    }
+
+    .cardTitle {
+        font-size: 0.75rem;
+    }
+
+    .cardDesc {
+        font-size: 0.6rem;
     }
 }
