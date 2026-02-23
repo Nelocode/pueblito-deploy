@@ -8,9 +8,9 @@ import styles from './MasterPlanHotspots.module.css';
 // If cardX/cardY are present, a card is rendered. Otherwise, just a pin with a label.
 const spots = [
     // --- Left Side ---
-    { id: 'golf-1', title: "Campo de Golf", subtitle: "De 9 hoyos Par 3", x: 19, y: 35, cardX: 2, cardY: 5, image: "/images/master-plan/La isla.jpg", desc: "De 9 hoyos Par 3" },
-    { id: 'parque', title: "Parque Paseo del Sendero", x: 35, y: 75, cardX: 6, cardY: 28, image: "/images/master-plan/Parque Paseo del Sendero.jpg", desc: "" },
-    { id: 'isla', title: "La Isla", subtitle: "Club de Pesca, café y bar", x: 60, y: 40, cardX: 2, cardY: 58, image: "/images/master-plan/La isla.jpg", desc: "Club de Pesca, café y bar" },
+    { id: 'golf-1', title: "Campo de Golf", subtitle: "De 9 hoyos Par 3", x: 19, y: 35, cardX: 1, cardY: 5, image: "/images/master-plan/La isla.jpg", desc: "De 9 hoyos Par 3" },
+    { id: 'parque', title: "Parque Paseo del Sendero", x: 35, y: 75, cardX: 1, cardY: 35, image: "/images/master-plan/Parque Paseo del Sendero.jpg", desc: "" },
+    { id: 'isla', title: "La Isla", subtitle: "Club de Pesca, café y bar", x: 60, y: 40, cardX: 1, cardY: 65, image: "/images/master-plan/La isla.jpg", desc: "Club de Pesca, café y bar" },
 
     // Pins without cards (Labels only, exactly like reference)
     { id: 'acceso-serv', title: "Acceso Servicio", x: 26, y: 36 },
@@ -24,14 +24,14 @@ const spots = [
     { id: 'campo-golf-ref', title: "Campo de Golf", x: 50, y: 60 },
 
     // --- Right Side ---
-    { id: 'nube', title: "La Nube", subtitle: "Plaza Comercial y de entretenimiento", x: 75, y: 50, cardX: 73, cardY: 5, image: "/images/master-plan/La Nube.jpg", desc: "Plaza Comercial y de entretenimiento" },
-    { id: 'playa-art', title: "Playa artificial", subtitle: "Playa privada, cómoda, segura y con excelente servicio", x: 65, y: 35, cardX: 84, cardY: 23, image: "/images/master-plan/Playa Artificial.jpg", desc: "Playa privada, cómoda, segura y con excelente servicio" },
-    { id: 'piscinas', title: "Piscinas Club House", x: 61, y: 35, cardX: 73, cardY: 52, image: "/images/master-plan/Casa Club.jpg", desc: "" },
-    { id: 'club-dep', title: "Club Deportivo", subtitle: "Canchas de fútbol, pádel, tenis, entre otros.", x: 55, y: 65, cardX: 84, cardY: 70, image: "/images/master-plan/Centro Deportivo.jpg", desc: "Canchas de fútbol, pádel, tenis, entre otros." },
+    { id: 'nube', title: "La Nube", subtitle: "Plaza Comercial y de entretenimiento", x: 75, y: 50, cardX: 88, cardY: 5, image: "/images/master-plan/La Nube.jpg", desc: "Plaza Comercial y de entretenimiento" },
+    { id: 'playa-art', title: "Playa artificial", subtitle: "Playa privada, cómoda, segura y con excelente servicio", x: 65, y: 35, cardX: 88, cardY: 30, image: "/images/master-plan/Playa Artificial.jpg", desc: "Playa privada, cómoda, segura y con excelente servicio" },
+    { id: 'piscinas', title: "Piscinas Club House", x: 61, y: 35, cardX: 88, cardY: 55, image: "/images/master-plan/Casa Club.jpg", desc: "" },
+    { id: 'club-dep', title: "Club Deportivo", subtitle: "Canchas de fútbol, pádel, tenis, entre otros.", x: 55, y: 65, cardX: 88, cardY: 80, image: "/images/master-plan/Centro Deportivo.jpg", desc: "Canchas de fútbol, pádel, tenis, entre otros." },
 
     // Cards floating at bottom or alternate spots
-    { id: 'ashton-card', title: "International Ashton School", x: 35, y: 20, cardX: 13, cardY: 76, image: "/images/master-plan/Ashton School.jpg", desc: "" }, // Pin shares coord with ashton-pin roughly
-    { id: 'restaurantes', title: "Restaurantes", subtitle: "3 opciones gastronómicas al frente al Lago interno", x: 67, y: 38, cardX: 58, cardY: 82, image: "/images/master-plan/Yaque Bar.jpg", desc: "3 opciones gastronómicas al frente al Lago interno" },
+    { id: 'ashton-card', title: "International Ashton School", x: 35, y: 20, cardX: 62, cardY: 85, image: "/images/master-plan/Ashton School.jpg", desc: "" }, // Pin shares coord with ashton-pin roughly
+    { id: 'restaurantes', title: "Restaurantes", subtitle: "3 opciones gastronómicas al frente al Lago interno", x: 67, y: 38, cardX: 75, cardY: 85, image: "/images/master-plan/Yaque Bar.jpg", desc: "3 opciones gastronómicas al frente al Lago interno" },
 
     // Pins without cards right side
     { id: 'comp-dep', title: "Complejo Deportivo", x: 51, y: 21 },
