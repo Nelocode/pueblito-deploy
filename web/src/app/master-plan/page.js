@@ -20,11 +20,11 @@ export default function MasterPlanPage() {
       <section style={{ padding: '4rem 1rem', maxWidth: '1400px', margin: '0 auto' }}>
 
         {/* INTERACTIVE HOTSPOTS MAP */}
-        <div className="mb-16">
+        <div className="mb-4">
           <MasterPlanHotspots />
         </div>
 
-        <div style={{ textAlign: 'center', marginTop: '4rem' }}>
+        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
           <a href="/invest" className="btn-primary" style={{
             display: 'inline-block',
             backgroundColor: 'var(--primary)',

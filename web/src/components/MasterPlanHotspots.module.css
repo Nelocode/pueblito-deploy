@@ -106,8 +106,8 @@
 
 .cardImageWrapper {
     position: relative;
-    width: 95px;
-    height: 95px;
+    width: 115px;
+    height: 115px;
     border-radius: 50%;
     border: 3px solid #4a779b;
     background-color: #fff;
@@ -116,10 +116,9 @@
     transition: border-color 0.2s;
 }
 
-/* Modifier for logo */
 .logoWrapper {
-    width: 120px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
     border-radius: 50%;
     background-color: #4a779b;
     border: 4px solid #fff;
@@ -191,13 +190,13 @@
     }
 
     .cardImageWrapper {
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
     }
 
     .logoWrapper {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
     }
 
     .cardTitle {
@@ -212,13 +211,13 @@
     }
 
     .cardImageWrapper {
-        width: 70px;
-        height: 70px;
+        width: 85px;
+        height: 85px;
     }
 
     .logoWrapper {
-        width: 90px;
-        height: 90px;
+        width: 115px;
+        height: 115px;
     }
 
     .cardTitle {
@@ -324,16 +323,16 @@
 
     .cardImageWrapper {
         position: relative;
-        width: 100px;
-        height: 100px;
+        width: 115px;
+        height: 115px;
         border-radius: 50%;
         border: 4px solid #4a779b;
         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     }
 
     .logoWrapper {
-        width: 100px;
-        height: 100px;
+        width: 130px;
+        height: 130px;
     }
 
     .cardContent {

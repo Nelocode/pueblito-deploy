@@ -58,6 +58,20 @@ export default function MasterPlanHotspots() {
                             priority
                             sizes="(max-width: 850px) 100vw, 70vw"
                         />
+                        {/* Red overlay block for Pueblito Caribeño instead of a pulsing circle */}
+                        <div style={{
+                            position: 'absolute',
+                            left: '37%',
+                            top: '56.5%',
+                            width: '12%',
+                            height: '5.5%',
+                            backgroundColor: 'rgba(211, 47, 47, 0.45)', // #d32f2f matching Red
+                            borderRadius: '12px',
+                            transform: 'translate(-50%, -50%) rotate(24deg)',
+                            pointerEvents: 'none',
+                            zIndex: 3
+                        }}></div>
+
                         {/* SVG Connecting Lines (Hidden on mobile via CSS) */}
                         <svg className={styles.svgOverlay}>
                             {spots.map((spot) => (
@@ -69,15 +83,6 @@ export default function MasterPlanHotspots() {
                                         y2={`${spot.cardY}%`}
                                         className={`${styles.connectionLine} ${hoveredId === spot.id ? styles.lineActive : ''}`}
                                     />
-                                    {spot.isLogo && (
-                                        <circle
-                                            cx={`${spot.x}%`}
-                                            cy={`${spot.y}%`}
-                                            r="8"
-                                            fill="#d32f2f"
-                                            className={styles.pulsingCircle}
-                                        />
-                                    )}
                                 </g>
                             ))}
                         </svg>
