@@ -4,42 +4,15 @@ import { useState, useRef } from 'react';
 import Image from 'next/image';
 import styles from './MasterPlanHotspots.module.css';
 
-// Coordinates for pins (x,y) and cards (cardX, cardY) to scatter them
-// If cardX/cardY are present, a card is rendered. Otherwise, just a pin with a label.
 const spots = [
-    // --- Left Side ---
-    { id: 'golf-1', title: "Campo de Golf", subtitle: "De 9 hoyos Par 3", x: 19, y: 35, cardX: 1, cardY: 5, image: "/images/master-plan/La isla.jpg", desc: "De 9 hoyos Par 3" },
-    { id: 'parque', title: "Parque Paseo del Sendero", x: 35, y: 75, cardX: 1, cardY: 35, image: "/images/master-plan/Parque Paseo del Sendero.jpg", desc: "" },
-    { id: 'isla', title: "La Isla", subtitle: "Club de Pesca, café y bar", x: 60, y: 40, cardX: 1, cardY: 65, image: "/images/master-plan/La isla.jpg", desc: "Club de Pesca, café y bar" },
-
-    // Pins without cards (Labels only, exactly like reference)
-    { id: 'acceso-serv', title: "Acceso Servicio", x: 26, y: 36 },
-    { id: 'ashton-pin', title: "Ashton School", x: 35, y: 20 },
-    { id: 'acceso-res-1', title: "Acceso Residentes", x: 42, y: 15 },
-    { id: 'lago-2', title: "Lago 2 Club", x: 41, y: 30 },
-    { id: 'royal-gardens', title: "Royal Gardens", x: 25, y: 78 },
-    { id: 'zona-ecuestre', title: "Zona Ecuestre", x: 35, y: 62 },
-    { id: 'wellness-residences', title: "Wellness Residences @ Paseo Park", x: 35, y: 66 },
-    { id: 'pueblito-caribeno', title: "Pueblito Caribeño", x: 43, y: 53 },
-    { id: 'campo-golf-ref', title: "Campo de Golf", x: 50, y: 60 },
-
-    // --- Right Side ---
-    { id: 'nube', title: "La Nube", subtitle: "Plaza Comercial y de entretenimiento", x: 75, y: 50, cardX: 88, cardY: 5, image: "/images/master-plan/La Nube.jpg", desc: "Plaza Comercial y de entretenimiento" },
-    { id: 'playa-art', title: "Playa artificial", subtitle: "Playa privada, cómoda, segura y con excelente servicio", x: 65, y: 35, cardX: 88, cardY: 30, image: "/images/master-plan/Playa Artificial.jpg", desc: "Playa privada, cómoda, segura y con excelente servicio" },
-    { id: 'piscinas', title: "Piscinas Club House", x: 61, y: 35, cardX: 88, cardY: 55, image: "/images/master-plan/Casa Club.jpg", desc: "" },
-    { id: 'club-dep', title: "Club Deportivo", subtitle: "Canchas de fútbol, pádel, tenis, entre otros.", x: 55, y: 65, cardX: 88, cardY: 80, image: "/images/master-plan/Centro Deportivo.jpg", desc: "Canchas de fútbol, pádel, tenis, entre otros." },
-
-    // Cards floating at bottom or alternate spots
-    { id: 'ashton-card', title: "International Ashton School", x: 35, y: 20, cardX: 62, cardY: 85, image: "/images/master-plan/Ashton School.jpg", desc: "" }, // Pin shares coord with ashton-pin roughly
-    { id: 'restaurantes', title: "Restaurantes", subtitle: "3 opciones gastronómicas al frente al Lago interno", x: 67, y: 38, cardX: 75, cardY: 85, image: "/images/master-plan/Yaque Bar.jpg", desc: "3 opciones gastronómicas al frente al Lago interno" },
-
-    // Pins without cards right side
-    { id: 'comp-dep', title: "Complejo Deportivo", x: 51, y: 21 },
-    { id: 'lago-1', title: "Lago 1 Playa Artificial", x: 64, y: 35 }, // Near playa-art
-    { id: 'chukum', title: "Chukum Lagoon", subtitle: "Hotel & Residences", x: 69, y: 38 },
-    { id: 'acceso-res-2', title: "Acceso Residentes", x: 78, y: 20 },
-    { id: 'plaza-com-la-nube', title: "Plaza Comercial La Nube", x: 75, y: 50 }, // Near nube
-    { id: 'rest-piscina-salon', title: "Restaurantes Piscinas Salón Eventos", x: 61, y: 32 }, // Near piscinas
+    { id: 'ashton', title: "ASHTON\nSCHOOL", x: 26, y: 25, cardX: 5, cardY: 20, image: "/images/master-plan/Ashton School.jpg", labelPos: 'left' },
+    { id: 'centro-dep', title: "CENTRO\nDEPORTIVO", x: 48, y: 38, cardX: 45, cardY: -5, image: "/images/master-plan/Centro Deportivo.jpg", labelPos: 'left' },
+    { id: 'la-sirena', title: "LA\nSIRENA", x: 65, y: 31, cardX: 63, cardY: 5, image: "/images/La-sirena.jpg", labelPos: 'left' },
+    { id: 'golds-gym', title: "GOLD'S\nGYM", x: 77, y: 29, cardX: 95, cardY: 30, image: "/images/master-plan/Casa Club.jpg", labelPos: 'right' },
+    { id: 'business-center', title: "BUSSINES\nCENTER", x: 74, y: 37, cardX: 95, cardY: 60, image: "/images/master-plan/La Nube.jpg", labelPos: 'right' },
+    { id: 'golf', title: "CAMPO\nDE GOLF", x: 60, y: 55, cardX: 85, cardY: 85, image: "/images/master-plan/La isla.jpg", labelPos: 'right' },
+    { id: 'pueblito', title: "", x: 37, y: 62, cardX: 65, cardY: 100, image: "/images/Logoblanco.png", labelPos: 'none', isLogo: true },
+    { id: 'parque', title: "PARQUE\nPASEO\nDEL\nSENDERO", x: 35, y: 75, cardX: 5, cardY: 85, image: "/images/master-plan/Parque Paseo del Sendero.jpg", labelPos: 'left' }
 ];
 
 export default function MasterPlanHotspots() {
@@ -85,55 +58,57 @@ export default function MasterPlanHotspots() {
                             priority
                             sizes="(max-width: 850px) 100vw, 70vw"
                         />
+                        {/* SVG Connecting Lines (Hidden on mobile via CSS) */}
+                        <svg className={styles.svgOverlay}>
+                            {spots.map((spot) => (
+                                <line
+                                    key={`line-${spot.id}`}
+                                    x1={`${spot.x}%`}
+                                    y1={`${spot.y}%`}
+                                    x2={`${spot.cardX}%`}
+                                    y2={`${spot.cardY}%`}
+                                    className={`${styles.connectionLine} ${hoveredId === spot.id ? styles.lineActive : ''}`}
+                                />
+                            ))}
+                        </svg>
 
-                        {/* MAP PINS */}
-                        {spots.map((spot) => (
-                            <div
-                                key={`pin-${spot.id}`}
-                                className={`${styles.pin} ${hoveredId === spot.id ? styles.pinActive : ''}`}
-                                style={{ left: `${spot.x}%`, top: `${spot.y}%` }}
-                                onMouseEnter={() => setHoveredId(spot.id)}
-                                onMouseLeave={() => setHoveredId(null)}
-                                onClick={() => handlePinClick(spot.id)}
-                            >
-                                <div className={styles.pinInner}></div>
-                                <div className={styles.pinLabel}>{spot.title}</div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+                        {/* SCATTERED CARDS WRAPPER FOR MOBILE CAROUSEL */}
+                        <div className={styles.cardsWrapper} ref={cardsWrapperRef}>
+                            {spots.filter(spot => spot.cardX !== undefined && spot.cardY !== undefined).map((spot) => (
+                                <div
+                                    key={`card-${spot.id}`}
+                                    id={`card-${spot.id}`}
+                                    className={`${styles.card} ${hoveredId === spot.id ? styles.cardActive : ''}`}
+                                    style={{ '--desktop-left': `${spot.cardX}%`, '--desktop-top': `${spot.cardY}%` }}
+                                    onMouseEnter={() => setHoveredId(spot.id)}
+                                    onMouseLeave={() => setHoveredId(null)}
+                                    onClick={() => handlePinClick(spot.id)}
+                                >
+                                    <div className={`${styles.cardImageWrapper} ${spot.isLogo ? styles.logoWrapper : ''}`}>
+                                        {spot.image && (
+                                            <Image
+                                                src={spot.image}
+                                                alt={spot.title}
+                                                fill
+                                                className={`${styles.cardImage} ${spot.isLogo ? styles.logoImage : ''}`}
+                                                sizes="(max-width: 850px) 320px, 220px"
+                                            />
+                                        )}
+                                    </div>
 
-                {/* SCATTERED CARDS WRAPPER FOR MOBILE CAROUSEL */}
-                <div className={styles.cardsWrapper} ref={cardsWrapperRef}>
-                    {spots.filter(spot => spot.cardX !== undefined && spot.cardY !== undefined).map((spot) => (
-                        <div
-                            key={`card-${spot.id}`}
-                            id={`card-${spot.id}`}
-                            className={`${styles.card} ${hoveredId === spot.id ? styles.cardActive : ''}`}
-                            style={{ '--desktop-left': `${spot.cardX}%`, '--desktop-top': `${spot.cardY}%` }}
-                            onMouseEnter={() => setHoveredId(spot.id)}
-                            onMouseLeave={() => setHoveredId(null)}
-                            onClick={() => handlePinClick(spot.id)}
-                        >
-                            <div className={styles.cardImageWrapper}>
-                                {spot.image && (
-                                    <Image
-                                        src={spot.image}
-                                        alt={spot.title}
-                                        fill
-                                        className={styles.cardImage}
-                                        sizes="(max-width: 850px) 320px, 220px"
-                                    />
-                                )}
-                            </div>
-                            <div className={styles.cardContent}>
-                                <h3 className={styles.cardTitle}>{spot.title}</h3>
-                                {(spot.desc || spot.subtitle) && (
-                                    <p className={styles.cardDesc}>{spot.subtitle || spot.desc}</p>
-                                )}
-                            </div>
+                                    {spot.labelPos !== 'none' && (
+                                        <div className={`${styles.cardContent} ${styles[`label-${spot.labelPos}`]}`}>
+                                            <h3 className={styles.cardTitle}>
+                                                {spot.title.split('\n').map((line, i) => (
+                                                    <span key={i}>{line}<br /></span>
+                                                ))}
+                                            </h3>
+                                        </div>
+                                    )}
+                                </div>
+                            ))}
                         </div>
-                    ))}
+                    </div>
                 </div>
 
             </div>

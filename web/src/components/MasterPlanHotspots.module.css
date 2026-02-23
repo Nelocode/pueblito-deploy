@@ -4,6 +4,7 @@
     margin: 0 auto;
     padding: 20px;
     background-color: #f9f7f2;
+    overflow-x: hidden;
 }
 
 /* SCATTER LAYOUT CONTAINER */
@@ -17,8 +18,8 @@
 /* MAP SECTION */
 .mapSection {
     position: absolute;
-    width: 74%;
-    left: 13%;
+    width: 65%;
+    left: 17.5%;
     top: 50px;
     z-index: 1;
     display: flex;
@@ -29,7 +30,8 @@
 .mapWrapper {
     position: relative;
     width: 100%;
-    padding-bottom: 70%;
+    padding-bottom: 76.8%;
+    /* Exact aspect ratio of Base.png (1815 / 2364) */
     background-color: transparent;
 }
 
@@ -37,7 +39,7 @@
     object-fit: contain;
 }
 
-/* CARDS */
+/* CARDS & SVG */
 .cardsWrapper {
     position: absolute;
     width: 100%;
@@ -46,185 +48,188 @@
     /* Let clicks pass through empty space to map */
 }
 
+/* SVG Overlay for Connections */
+.svgOverlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    /* Below cards but above map */
+    pointer-events: none;
+}
+
+.connectionLine {
+    stroke: #4a779b;
+    stroke-width: 2px;
+    opacity: 0.8;
+    transition: stroke-width 0.2s, stroke 0.2s, opacity 0.2s;
+}
+
+.lineActive {
+    stroke-width: 4px;
+    stroke: #E67E22;
+    opacity: 1;
+}
+
 .card {
     position: absolute;
     /* Scattered position in desktop */
     left: var(--desktop-left);
     top: var(--desktop-top);
+    transform: translate(-50%, -50%);
+    /* Centered on the coordinates */
     pointer-events: auto;
     /* Enable clicks on the cards themselves */
-    background: #fff;
-    border: 2px solid #1B365D;
-    /* Darker, thicker border matching reference */
-    overflow: hidden;
+    background: transparent;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    transition: transform 0.2s ease, z-index 0s;
     box-shadow: none;
-    /* Flat look like reference */
-    width: 140px;
-    /* Narrower for the pronounced tall/elongated look */
-    padding: 8px;
-    /* Prominent white frame padding */
+    width: auto;
+    padding: 0;
     z-index: 5;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%) scale(1.15);
     z-index: 15;
 }
 
 .cardActive {
-    border-color: #E67E22;
     z-index: 20;
 }
 
 .cardImageWrapper {
     position: relative;
-    width: 100%;
-    height: 100px;
-    /* Taller visually relative to the narrow requested width */
-    border: 1px solid #e0e0e0;
-    /* Subtle inner border often seen in this style */
+    width: 95px;
+    height: 95px;
+    border-radius: 50%;
+    border: 3px solid #4a779b;
+    background-color: #fff;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: border-color 0.2s;
+}
+
+/* Modifier for logo */
+.logoWrapper {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-color: #4a779b;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 12px;
+}
+
+.cardActive .cardImageWrapper {
+    border-color: #E67E22;
 }
 
 .cardImage {
     object-fit: cover;
 }
 
+.logoImage {
+    object-fit: contain;
+}
+
 .cardContent {
-    padding: 10px 0 0 0;
-    /* Only top padding to separate text from image */
-    background: #fff;
+    position: absolute;
+    width: max-content;
+    pointer-events: none;
+}
+
+.label-left {
+    right: 100%;
+    margin-right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: right;
+}
+
+.label-right {
+    left: 100%;
+    margin-left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
     text-align: left;
+}
+
+.label-none {
+    display: none;
 }
 
 .cardTitle {
     font-family: var(--font-body);
     font-size: 0.8rem;
-    font-weight: 700;
-    color: #1B365D;
-    margin-top: 6px;
-    margin-bottom: 2px;
+    font-weight: 800;
+    font-style: italic;
+    color: #4a779b;
+    line-height: 1.1;
+    margin: 0;
+    text-shadow: 0 2px 4px rgba(255, 255, 255, 1);
 }
 
 .cardDesc {
-    font-family: var(--font-body);
-    font-size: 0.65rem;
-    color: #888;
-    line-height: 1.2;
-}
-
-/* PINS */
-.pin {
-    position: absolute;
-    width: 12px;
-    height: 12px;
-    margin-left: -6px;
-    margin-top: -6px;
-    cursor: pointer;
-    border: none;
-    background: transparent;
-    z-index: 10;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.2s ease;
-}
-
-.pin:hover {
-    transform: scale(1.5);
-    z-index: 20;
-}
-
-.pinActive {
-    transform: scale(2);
-    z-index: 30;
-}
-
-.pinInner {
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: #E3000F;
-    border: 2px solid white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-.pinLabel {
-    position: absolute;
-    top: -20px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: white;
-    color: #1B365D;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-size: 10px;
-    font-weight: bold;
-    white-space: nowrap;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s;
-    z-index: 40;
-}
-
-.pin:hover .pinLabel,
-.pinActive .pinLabel {
-    opacity: 1;
+    display: none;
 }
 
 /* Responsive Rules */
 @media (max-width: 1200px) {
     .mapSection {
-        width: 74%;
-        left: 13%;
-    }
-
-    .card {
-        width: 115px;
-        padding: 6px;
+        width: 70%;
+        left: 15%;
     }
 
     .cardImageWrapper {
-        height: 85px;
+        width: 80px;
+        height: 80px;
+    }
+
+    .logoWrapper {
+        width: 100px;
+        height: 100px;
     }
 
     .cardTitle {
         font-size: 0.75rem;
-        margin-top: 4px;
     }
 }
 
 @media (max-width: 1024px) {
     .mapSection {
-        width: 76%;
-        left: 12%;
-    }
-
-    .card {
-        width: 95px;
-        padding: 4px;
+        width: 75%;
+        left: 12.5%;
     }
 
     .cardImageWrapper {
+        width: 70px;
         height: 70px;
+    }
+
+    .logoWrapper {
+        width: 90px;
+        height: 90px;
     }
 
     .cardTitle {
         font-size: 0.65rem;
     }
-
-    .cardDesc {
-        display: none;
-        /* Hide desc on small tablets to save space */
-    }
 }
 
 @media (max-width: 850px) {
+
+    /* SVG Hidden in mobile */
+    .svgOverlay {
+        display: none;
+    }
+
     .container {
         padding: 0;
         /* Remove horizontal padding so carousel touches edges */
@@ -283,37 +288,63 @@
 
     .card {
         position: relative;
-        /* Remove absolute positioning */
         left: auto !important;
         top: auto !important;
-        min-width: 260px;
-        /* Comfortable width for swiping */
+        transform: none !important;
+        /* Revert transform */
+        min-width: 160px;
+        /* Small square for mobile carousel */
         flex: 0 0 auto;
         scroll-snap-align: center;
-        width: 260px;
-        padding: 12px;
+        width: 160px;
+        padding: 10px;
         border-radius: 8px;
-        /* Slightly softer corners on mobile */
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
-        /* Persistent soft shadow so it feels like a card */
-        border: 1px solid #eee;
+        box-shadow: none;
+        border: none;
+        background: transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .cardActive {
+    .card:hover {
+        transform: none !important;
+        /* Prevent hover grow on mobile carousel */
+        z-index: auto;
+    }
+
+    .cardActive .cardImageWrapper {
         border-color: #E67E22;
-        box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2), 0 4px 12px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 0 4px rgba(230, 126, 34, 0.2);
     }
 
     .cardImageWrapper {
-        height: 140px;
-        /* Taller image on mobile since card is wider */
-        border-radius: 4px;
-        overflow: hidden;
+        position: relative;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 4px solid #4a779b;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .logoWrapper {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cardContent {
+        position: static;
+        transform: none;
+        margin: 0 !important;
+        text-align: center;
+        width: 100%;
     }
 
     .cardTitle {
-        font-size: 1rem;
-        margin-top: 10px;
+        font-size: 0.85rem;
+        font-style: italic;
+        color: #4a779b;
     }
 
     .cardDesc {
