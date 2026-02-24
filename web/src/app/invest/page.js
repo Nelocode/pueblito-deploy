@@ -89,7 +89,7 @@ export default function InvestPage() {
 
       <section className={styles.contentSection}>
         <div className={styles.introMessage}>
-          "Elige el espacio que se ajuste a tus necesidades"
+          &quot;Elige el espacio que se ajuste a tus necesidades&quot;
         </div>
 
         {/* Apartments Container to isolate sibling counting */}

@@ -89,9 +89,6 @@ export default function ConversationalForm() {
         if (questions[step].type === 'text' || questions[step].type === 'email' || questions[step].type === 'tel') {
             setTimeout(() => inputRef.current?.focus(), 500);
         }
-        const existingValue = formData[questions[step].id];
-        setInputValue(existingValue || "");
-        setError("");
     }, [step]);
 
     const handleNext = () => {
@@ -116,6 +113,8 @@ export default function ConversationalForm() {
 
         if (step < questions.length - 1) {
             setStep(step + 1);
+            setInputValue("");
+            setError("");
         } else {
             handleSubmit();
         }
@@ -127,6 +126,8 @@ export default function ConversationalForm() {
         setTimeout(() => {
             if (step < questions.length - 1) {
                 setStep(step + 1);
+                setInputValue("");
+                setError("");
             }
         }, 300);
     };
