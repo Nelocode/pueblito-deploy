@@ -4,7 +4,7 @@ import styles from './InvestSection.module.css';
 import Image from 'next/image';
 import PageHeader from "@/components/PageHeader";
 import ApartmentCarousel from "@/components/ApartmentCarousel";
-import { Bed, Bath, ChefHat, Check, Zap, WashingMachine, Flame, Waves } from 'lucide-react';
+import { Bed, Bath } from 'lucide-react';
 
 export const metadata = {
   title: "Invertir | Pueblito Caribeño",
@@ -14,50 +14,27 @@ export const metadata = {
 const investmentOptions = [
   {
     title: "Apartamento 1er. Nivel",
-    location: "Plaza Colón y Plaza de los Coches",
     area: "119 m²",
     rooms: "2+",
     baths: "2.5",
-    features: [
-      { icon: <ChefHat size={18} />, text: "Cocina modular equipada" },
-      { icon: <Check size={18} />, text: "Línea blanca incluida (Nevera, Estufa, Horno)" },
-      { icon: <Zap size={18} />, text: "Campana extractora" },
-      { icon: <WashingMachine size={18} />, text: "Lavadora/secadora" },
-      { icon: <Flame size={18} />, text: "Calentador" },
-      { icon: <Waves size={18} />, text: "Jacuzzi" }
-    ],
     // Correct Updated Image for Level 1
     images: ["/images/apto_nivel_1_new.jpg"],
     colorClass: styles.bgBurgundy
   },
   {
     title: "Apartamento 2do. Nivel",
-    location: "Calle Cartagena, Santo Domingo, Granada y El Viejo San Juan",
     area: "106 – 114 m²",
     rooms: "2 + Salón + Rooftop",
     baths: "2.5",
-    features: [
-      { icon: <Check size={18} />, text: "Walk-in closet" },
-      { icon: <ChefHat size={18} />, text: "Cocina modular equipada" },
-      { icon: <Check size={18} />, text: "Línea blanca completa" },
-      { icon: <Waves size={18} />, text: "Jacuzzi" }
-    ],
     // Correct Updated Image for Level 2
     images: ["/images/apto_nivel_2_new.jpg"],
     colorClass: styles.bgNavy
   },
   {
     title: "Apto. Plaza Colón 2o. Nivel",
-    location: "Plaza Colón y Plaza de los Coches",
     area: "63 – 68 m²",
     rooms: "1 + Salón + Rooftop",
     baths: "1",
-    features: [
-      { icon: <ChefHat size={18} />, text: "Cocina modular equipada" },
-      { icon: <Check size={18} />, text: "Línea blanca completa" },
-      { icon: <Check size={18} />, text: "Ideal para inversión" },
-      { icon: <Waves size={18} />, text: "Jacuzzi" }
-    ],
     // Correct Updated Image for Plaza Colon
     images: ["/images/apto_plaza_colon_rooftop.jpg"],
     colorClass: styles.bgOlive
@@ -114,20 +91,7 @@ export default function InvestPage() {
                   </div>
                 </div>
 
-                <div className={styles.description}>
-                  <p><strong>Ubicación:</strong> {option.location}</p>
-                </div>
-
-                <ul className={styles.featuresList}>
-                  {option.features.map((feature, i) => (
-                    <li key={i}>
-                      <span className={styles.iconWrapper}>{feature.icon}</span>
-                      {feature.text}
-                    </li>
-                  ))}
-                </ul>
-
-                <button className={styles.ctaButton}>Más información</button>
+                <a href="/contacto" className={styles.ctaButton}>Más información</a>
               </div>
 
               <div className={styles.imageContent}>

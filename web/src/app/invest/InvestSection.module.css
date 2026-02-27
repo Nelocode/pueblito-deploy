@@ -66,87 +66,52 @@
 
 .title {
     font-family: var(--font-body);
-    font-size: 2rem;
+    font-size: 3.5rem;
     font-weight: 700;
-    margin-bottom: 2rem;
+    margin-bottom: 2.5rem;
     color: white;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-    padding-bottom: 1rem;
-    line-height: 1.2;
-}
-
-@media (max-width: 1100px) {
-    .title {
-        font-size: 2.5rem;
-    }
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding-bottom: 1.5rem;
+    line-height: 1;
 }
 
 .statsGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-bottom: 2rem;
+    display: flex;
+    gap: 4rem;
+    margin-bottom: 4rem;
 }
 
 .statItem {
-    border-left: 2px solid rgba(255, 255, 255, 0.3);
-    padding-left: 1rem;
+    border-left: 3px solid rgba(255, 255, 255, 0.4);
+    padding-left: 1.5rem;
 }
 
 .statValue {
     display: block;
-    font-size: 1.4rem;
+    font-size: 2.2rem;
     font-weight: 700;
     margin-bottom: 0.2rem;
-    color: #F4F1EA;
+    color: white;
 }
 
 .statLabel {
     display: block;
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 1rem;
+    opacity: 0.7;
     text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.description {
-    margin-bottom: 2rem;
-    line-height: 1.6;
-    font-size: 1.1rem;
-    opacity: 0.9;
-}
-
-.featuresList {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 2.5rem;
-}
-
-.featuresList li {
-    margin-bottom: 0.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.8rem;
-}
-
-.iconWrapper {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    opacity: 0.9;
+    letter-spacing: 2px;
 }
 
 .ctaButton {
     align-self: flex-start;
-    padding: 1rem 2.5rem;
+    padding: 1.2rem 3rem;
     background-color: transparent;
     border: 1px solid white;
     color: white;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 3px;
     font-weight: 600;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;

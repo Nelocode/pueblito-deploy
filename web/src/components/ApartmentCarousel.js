@@ -3,7 +3,6 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './ApartmentCarousel.module.css';
 
 const ApartmentCarousel = ({ images, title }) => {
@@ -41,23 +40,15 @@ const ApartmentCarousel = ({ images, title }) => {
             </AnimatePresence>
 
             {images.length > 1 && (
-                <>
-                    <button onClick={prevSlide} className={`${styles.navButton} ${styles.prev}`}>
-                        <ChevronLeft size={24} />
-                    </button>
-                    <button onClick={nextSlide} className={`${styles.navButton} ${styles.next}`}>
-                        <ChevronRight size={24} />
-                    </button>
-                    <div className={styles.dots}>
-                        {images.map((_, idx) => (
-                            <span
-                                key={idx}
-                                className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
-                                onClick={() => setCurrentIndex(idx)}
-                            />
-                        ))}
-                    </div>
-                </>
+                <div className={styles.dots}>
+                    {images.map((_, idx) => (
+                        <span
+                            key={idx}
+                            className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
+                            onClick={() => setCurrentIndex(idx)}
+                        />
+                    ))}
+                </div>
             )}
         </div>
     );
