@@ -91,7 +91,7 @@ export default function InvestPage() {
                   </div>
                 </div>
 
-                <a href="/contacto" className={styles.ctaButton}>Más información</a>
+                <a href="/contact" className={styles.ctaButton}>Más información</a>
               </div>
 
               <div className={styles.imageContent}>
