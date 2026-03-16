@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import PageHeader from "@/components/PageHeader";
-import ConversationalForm from "@/components/ConversationalForm";
+import ZohoContactForm from "@/components/ZohoContactForm";
 
 export default function ContactPage() {
   return (
@@ -19,7 +19,7 @@ export default function ContactPage() {
         display: 'flex',
         alignItems: 'center'
       }}>
-        <ConversationalForm />
+        <ZohoContactForm />
       </section>
       <Footer />
     </main>
