@@ -8,14 +8,14 @@ const ZohoContactForm = () => {
     return (
         <div className={styles.formContainer} id='crmWebToEntityForm'>
             <h2 className={styles.title}>Contáctanos</h2>
-            <form action='https://crm.zohopublic.com/crm/WebToLeadForm' name='WebToLeads5262365000110043031' method='POST' onSubmit={(e) => {
+            <form action='https://crm.zoho.com/crm/WebToLeadForm' name='WebToLeads5262365000110043031' method='POST' onSubmit={(e) => {
                 if (typeof window.checkMandatory5262365000110043031 === 'function') {
                     return window.checkMandatory5262365000110043031();
                 }
             }} acceptCharset='UTF-8'>
-                <input type='text' style={{ display: 'none' }} name='xnQsjsdp' value='f5542a2ab83b1be19c08b00c7166da0e1c00801e6f03f8d78c0b00ebbc37c6df' />
+                <input type='text' style={{ display: 'none' }} name='xnQsjsdp' value='2057345337abab05548d32fd4c2a277f7e32602ed9bbaf34aee66b720dde72cb' />
                 <input type='hidden' name='zc_gad' id='zc_gad' value='' />
-                <input type='text' style={{ display: 'none' }} name='xmIwhdap' value='8d00af6ca1e8efa9bc7a8bd1a077e5cd8c4ab979f0d473e70b78cd273e5c4e141c1736b4861a3c574b3efd5c0e297b8egide298cdc475f7a1f926c74b70d2fa4cc9177c9e40ba8f5659b5e8389f7a4da9c3' />
+                <input type='text' style={{ display: 'none' }} name='xmIwtLD' value='76f8392fd5115ed60e5a24d82a12df1ad07dd5d9b221471f1a41477bba6b703b07850c6b4696aa0531251e9566a3806d' />
                 <input type='text' style={{ display: 'none' }} name='actionType' value='TGVhZHM=' />
                 <input type='text' style={{ display: 'none' }} name='returnURL' value='https&#x3a;&#x2f;&#x2f;pueblitocaribeno.com&#x2f;gracias' />
 
@@ -116,7 +116,7 @@ const ZohoContactForm = () => {
                     `
                 }} />
                 
-                <Script id="zoho-analytics" src="https://crm.zohopublic.com/crm/WebFormAnalyticsServeServlet?rid=8d00af6ca1e8efa9bc7a8bd1a077e5cd8c4ab979f0d473e70b78cd273e5c4e141c1736b4861a3c574b3efd5c0e297b8egide298cdc475f7a1f926c74b70d2fa4cc9177c9e40ba8f5659b5e8389f7a4da9c3gid72bb11940c5d243683cce85ccb8f449f7541e172065a049f1d6d9dc3e7c15c77gid0a5a226f09ddf77dc71059e7bb17a98044b96266cc399cf1f0833ccf5270c4bf&tw=f5542a2ab83b1be19c08b00c7166da0e1c00801e6f03f8d78c0b00ebbc37c6df" strategy="lazyOnload" />
+                <Script id="zoho-analytics" src="https://crm.zoho.com/crm/WebFormAnalyticsServeServlet?rid=2057345337abab05548d32fd4c2a277f7e32602ed9bbaf34aee66b720dde72cb&tw=2057345337abab05548d32fd4c2a277f7e32602ed9bbaf34aee66b720dde72cb" strategy="lazyOnload" />
             </form>
         </div>
     );
