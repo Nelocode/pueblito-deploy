@@ -111,7 +111,7 @@ const ZohoContactForm = () => {
                                 }
                             }
                             if ( !validateEmail5262365000110043031() ) { return false; }
-                            document.querySelector('.formsubmit').setAttribute('disabled', true);
+                            document.querySelector('#formsubmit').setAttribute('disabled', true);
                         }
                     `
                 }} />
