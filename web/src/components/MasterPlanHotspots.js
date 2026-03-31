@@ -8,9 +8,9 @@ const spots = [
     { id: 'ashton', title: "ASHTON\nSCHOOL", x: 23.8, y: 21.4, cardX: 5, cardY: 20, image: "/images/master-plan/Ashton School.jpg", labelPos: 'left' },
     { id: 'centro-dep', title: "CENTRO\nDEPORTIVO", x: 51.9, y: 40.7, cardX: 45, cardY: -5, image: "/images/master-plan/Centro Deportivo.jpg", labelPos: 'left' },
     { id: 'la-sirena', title: "LA\nSIRENA", x: 85.7, y: 20.2, cardX: 63, cardY: 5, image: "/images/La-sirena.jpg", labelPos: 'left' },
-    { id: 'golds-gym', title: "GOLD'S\nGYM", x: 93.1, y: 20.2, cardX: 98, cardY: 5, image: "/images/master-plan/Casa Club.jpg", labelPos: 'right' },
-    { id: 'business-center', title: "BUSSINES\nCENTER", x: 91.3, y: 20.5, cardX: 95, cardY: 60, image: "/images/master-plan/La Nube.jpg", labelPos: 'right' },
-    { id: 'golf', title: "CAMPO\nDE GOLF", x: 52.6, y: 61.5, cardX: 85, cardY: 85, image: "/images/master-plan/La isla.jpg", labelPos: 'right' },
+    { id: 'golds-gym', title: "GOLD'S\nGYM", x: 93.1, y: 20.2, cardX: 98, cardY: 5, image: "/images/amenities/golds_gym.jpg", labelPos: 'right' },
+    { id: 'business-center', title: "VISTACANA\nBUSINESS\nCENTER", x: 91.3, y: 20.5, cardX: 95, cardY: 60, image: "/images/amenities/farmacia_estacion.jpg", labelPos: 'right' },
+    { id: 'golf', title: "CAMPO\nDE GOLF", x: 52.6, y: 61.5, cardX: 85, cardY: 85, image: "/images/amenities/campo_golf.jpg", labelPos: 'right' },
     { id: 'pueblito', title: "", x: 36.6, y: 56.1, cardX: 65, cardY: 100, image: "/images/Logoblanco.png", labelPos: 'none', isLogo: true },
     { id: 'parque', title: "PARQUE\nPASEO\nDEL\nSENDERO", x: 37.9, y: 62.0, cardX: 5, cardY: 85, image: "/images/master-plan/Parque Paseo del Sendero.jpg", labelPos: 'left' }
 ];

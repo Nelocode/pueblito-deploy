@@ -31,11 +31,11 @@ export default function AboutPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }}>
             {[
-              { title: "Pueblito Caribeño", year: "2024", img: "/images/projects/pueblito-caribeno.jpg", type: "Cultural & Residencial", desc: "La joya de Vistacana, donde el encanto colonial cobra vida." },
+              { title: "Pueblito Caribeño", year: "2021", img: "/images/projects/pueblito-caribeno.jpg", type: "Cultural & Residencial", desc: "La joya de Vistacana, donde el encanto colonial cobra vida." },
               { title: "Royal Gardens", year: "2020", img: "/images/projects/royal-gardens.jpg", type: "Residencial Moderno", desc: "Solares y viviendas unifamiliares con diseño de vanguardia." },
-              { title: "KAU Panamá", year: "2018", img: "/images/projects/kau-panama.jpg", type: "Master Plan Internacional", desc: "Desarrollo mixto con vistas al mar en Panamá." },
-              { title: "Chukum Lagoon", year: "2023", img: "/images/projects/chukum-lagoon.jpg", type: "Condohotel de Lujo", desc: "Servicios hoteleros frente a una laguna cristalina." },
-              { title: "Poúra Vinta", year: "2022", img: "/images/projects/poura-vinta.jpg", type: "Comunidad Ecuestre", desc: "Un paraíso para los amantes de la naturaleza y los caballos." },
+              { title: "KAU Panamá", year: "2023", img: "/images/projects/kau-panama.jpg", type: "Master Plan Internacional", desc: "Desarrollo mixto con vistas al mar en Panamá." },
+              { title: "Chukum Lagoon", year: "2022", img: "/images/projects/chukum-lagoon.jpg", type: "Condohotel de Lujo", desc: "Servicios hoteleros frente a una laguna cristalina." },
+              { title: "Poúra Vinta", year: "2025", img: "/images/projects/poura-vinta.jpg", type: "Comunidad Ecuestre", desc: "Un paraíso para los amantes de la naturaleza y los caballos." },
             ].map((project, i) => (
               <div key={i} style={{ backgroundColor: 'white', borderRadius: '12px', overflow: 'hidden', boxShadow: '0 10px 30px rgba(0,0,0,0.05)', display: 'flex', flexDirection: 'column' }}>
                 <div style={{ height: '220px', position: 'relative' }}>

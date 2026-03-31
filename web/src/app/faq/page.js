@@ -43,7 +43,7 @@ const faqs = [
   },
   {
     q: "¿Cuándo se entregan los apartamentos?",
-    a: "La primera etapa se viene entregando desde el mes de agosto de 2025 hasta el primer trimestre de 2026. La Etapa 2 está en venta actualmente, con entregas estimadas para diciembre de 2027."
+    a: "La primera etapa se viene entregando desde el mes de agosto de 2025 hasta el primer trimestre de 2026. La Etapa 2 está en venta actualmente, y su entrega varía según la unidad."
   },
   {
     q: "¿Qué incluye la cuota de mantenimiento?",
@@ -51,7 +51,7 @@ const faqs = [
   },
   {
     q: "¿De qué valor será la cuota de condominio o administración?",
-    a: "Está previsto que dicha cuota esté alrededor de los 2.5 dólares por metro cuadrado. El monto final será definido en el último trimestre de 2025."
+    a: "Está previsto que dicha cuota esté alrededor de los 2.5 dólares por metro cuadrado."
   },
   {
     q: "¿Qué actividades culturales se realizan?",

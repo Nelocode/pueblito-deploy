@@ -79,8 +79,11 @@ const Footer = () => {
           <p style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
             <span style={{ color: '#D4AF37' }}>📍</span> Punta Cana, República Dominicana
           </p>
-          <p style={{ marginBottom: '2rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-            <span style={{ color: '#D4AF37' }}>✉️</span> info@pueblitocaribeno.com
+          <p style={{ marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: '#D4AF37' }}>✉️</span> ventas@paseodelsendero.com
+          </p>
+          <p style={{ marginBottom: '2.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+            <span style={{ color: '#D4AF37' }}>📞</span> +1 (829) 259-8948
           </p>
 
           <form style={{ display: 'flex', gap: '0.5rem', marginTop: '1rem' }}>
@@ -107,6 +110,34 @@ const Footer = () => {
         <p>© {new Date().getFullYear()} Pueblito Caribeño. Todos los derechos reservados.</p>
       </div>
 
+      {/* Floating WhatsApp Widget */}
+      <a
+        href="https://wa.me/18292598948"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          bottom: '2rem',
+          right: '2rem',
+          backgroundColor: '#25D366',
+          color: 'white',
+          width: '60px',
+          height: '60px',
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          boxShadow: '0 4px 10px rgba(0,0,0,0.3)',
+          zIndex: 9999,
+          fontSize: '2rem',
+          textDecoration: 'none'
+        }}
+        aria-label="Contactar por WhatsApp"
+      >
+        <svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12.031 6.172c-2.32 0-4.507.905-6.148 2.547-3.39 3.391-3.39 8.905-.001 12.296l.001.001a8.67 8.67 0 0 0 1.583 1.258l-1.018 3.714 3.811-1.001a8.636 8.636 0 0 0 4.148 1.055h.001c2.32 0 4.507-.905 6.148-2.547 3.39-3.391 3.39-8.905.001-12.296-1.641-1.642-3.828-2.547-6.148-2.547zM6.621 17.585l-.234-.372c-1.332-2.115-1.282-4.836.14-6.907.456-.665 1.041-1.241 1.716-1.685 1.948-1.281 4.498-1.291 6.455-.027 1.229.793 2.155 2.052 2.54 3.456.386 1.405.215 2.909-.459 4.135-.595 1.082-1.528 1.956-2.628 2.459-1.378.631-2.903.744-4.321.319l-.403-.122-2.3.603.602-2.193a6.45 6.45 0 0 1-.508-2.203z"/>
+        </svg>
+      </a>
     </footer>
   );
 };

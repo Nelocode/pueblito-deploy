@@ -18,9 +18,10 @@ export default function LivingPage() {
     { name: "Cartagena", country: "Colombia", img: "/images/Inspiracion3.jpg", color: "#009B77" }, // Teal
     { name: "Santo Domingo", country: "República Dominicana", img: "/images/Inspiracion4.jpg", color: "#003087" }, // Royal Blue
     { name: "Granada", country: "Isla del Caribe", img: "/images/Inspiracion5.jpg", color: "#9C27B0" }, // Purple
-    { name: "Portobelo", country: "Panamá", img: "/images/Inspiracion6.jpg", color: "#4CAF50" }, // Green
+    { name: "Portobelo", country: "Panamá", img: "/images/Inspiracion6_new.png", color: "#4CAF50" }, // Green
     { name: "Coro", country: "Venezuela", img: "/images/Inspiracion7.jpg", color: "#FF5722" }, // Deep Orange
-    { name: "Antigua", country: "Guatemala", img: "/images/Inspiracion8_3.jpg", color: "#795548" }, // Brown
+    { name: "Antigua", country: "Guatemala", img: "/images/Inspiracion8_new.png", color: "#795548" }, // Brown
+    { name: "Costa Nova", country: "Portugal", img: "/images/Inspiracion9_costa_nova.png", color: "#003087" }, // Navy
   ];
 
   // Colors to cycle through for icons - STRICT USE of approved palette
@@ -100,10 +101,10 @@ export default function LivingPage() {
       mapQuery: "Bru Coffee Vistacana"
     },
     {
-      title: "Farmacia y Servicios",
-      desc: "Conveniencia total con farmacia, estación de servicio y comercios esenciales a solo pasos de tu hogar.",
+      title: "Vistacana Business Center",
+      desc: "Conveniencia total con oficinas de negocios, farmacia, estación de servicio y comercios esenciales a solo pasos de tu hogar.",
       img: "/images/amenities/farmacia_estacion.jpg",
-      mapQuery: "Vistacana Farmacia"
+      mapQuery: "Vistacana Business Center"
     },
   ];
 
@@ -193,7 +194,7 @@ export default function LivingPage() {
 
       {/* 3. Location Section */}
       <section style={{ padding: '6rem 2rem', textAlign: 'center' }}>
-        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', color: '#7CBD9F', marginBottom: '2rem' }}>Ubicación</h2>
+        <h2 style={{ fontFamily: 'var(--font-heading)', fontSize: '3.5rem', color: '#7CBD9F', marginBottom: '2rem' }}>Bávaro-Punta Cana, Ubicación en la zona</h2>
         <p style={{ maxWidth: '600px', margin: '0 auto 3rem auto', color: '#666' }}>
           Estratégicamente ubicado en el corazón de Vistacana, el destino más vibrante de Punta Cana.
         </p>
@@ -346,71 +347,6 @@ export default function LivingPage() {
               </div>
             )
           })}
-        </div>
-      </section>
-
-      {/* 6. Owner Service Center Section */}
-      <section style={{ position: 'relative', overflow: 'hidden' }}>
-        {/* Banner */}
-        <div style={{ position: 'relative', width: '100%', height: '500px' }}>
-          <Image
-            src="/images/centro_servicio_banner_v2.jpg"
-            alt="Centro de Servicio al Propietario"
-            fill
-            style={{ objectFit: 'cover', objectPosition: 'center' }}
-          />
-
-          {/* Optional: If text is already in image, we don't need overlay. The user's image HAS text. */}
-        </div>
-
-        {/* Teal Info Strip */}
-        <div style={{ backgroundColor: '#98cbb4', padding: '6rem 2rem', color: 'white', textAlign: 'center' }}>
-          <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
-            <p style={{
-              fontSize: '1.25rem',
-              lineHeight: '1.8',
-              marginBottom: '5rem',
-              fontWeight: '500' // slightly bolder for readability on color
-            }}>
-              En nuestro Centro de Servicio al Propietario acompañamos a nuestros propietarios y residentes en cada paso de su experiencia en Pueblito Caribeño. No se trata solo de adquirir una propiedad, sino de sentirte respaldado desde el primer día, con un equipo dispuesto a resolver tus dudas, atender tus solicitudes y guiarte en tu proceso de integración a la comunidad. Queremos que ocupes más que un espacio: queremos que vivas Pueblito con plenitud, tranquilidad y comodidad. Por eso, nuestro Centro de Servicio está diseñado para que disfrutes tu nuevo hogar sin preocupaciones y con la certeza de que siempre tendrás a alguien que te acompañe en cada detalle.
-            </p>
-
-            {/* Icons Grid */}
-            <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '4rem' }}>
-              {[
-                { icon: "🛎️", label: "Concierge" },
-                { icon: "🛠️", label: "Mantenimiento" },
-                { icon: "📦", label: "Recepción de\npaquetes" },
-                { icon: "📅", label: "Reservas" },
-                { icon: "🕒", label: "Servicio 24/7" },
-              ].map((service, i) => (
-                <div key={i} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1rem', width: '140px' }}>
-                  <div style={{
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '50%',
-                    border: '3px solid white',
-                    display: 'grid',
-                    placeItems: 'center',
-                    fontSize: '2.5rem',
-                    background: 'rgba(255,255,255,0.1)'
-                  }}>
-                    {/* Using emoji as placeholders, but ideally SVGs. The user provided an image with specific icons. 
-                            I will try to match them with emojis or simple SVGs if possible, or just circles for now. 
-                            Let's use SVGs for a premium look if I can, or Emojis for speed and update later.
-                            Given "WOW" factor required, emojis are risky. Let's use simple SVG paths.
-                        */}
-                    {i === 0 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>}
-                    {i === 1 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>}
-                    {i === 2 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>}
-                    {i === 3 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>}
-                    {i === 4 && <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>}
-                  </div>
-                  <span style={{ fontSize: '1.1rem', fontWeight: '500', whiteSpace: 'pre-line' }}>{service.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 

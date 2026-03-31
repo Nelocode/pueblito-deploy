@@ -50,7 +50,7 @@ const paymentPlan = {
     { name: "Abonos durante obra", value: "30%" },
     { name: "Pago final (Contra entrega)", value: "50%" }
   ],
-  deliveryDate: "Diciembre 2027",
+  deliveryDate: "",
   image: "/images/Casa-Amarilla-Acuarela-Manual-Uso-768x1152.png"
 };
 
@@ -79,7 +79,7 @@ export default function InvestPage() {
                 <div className={styles.statsGrid}>
                   <div className={styles.statItem}>
                     <span className={styles.statValue}>{option.area}</span>
-                    <span className={styles.statLabel}>Área</span>
+                    <span className={styles.statLabel}>Área Interior</span>
                   </div>
                   <div className={styles.statItem}>
                     <span className={styles.statValue}>{option.rooms}</span>
@@ -128,10 +128,12 @@ export default function InvestPage() {
               </div>
             ))}
 
-            <div className={styles.deliveryInfo} style={{ gridColumn: '1 / -1' }}>
-              <h3>Fecha estimada de entrega</h3>
-              <span className={styles.deliveryDate}>{paymentPlan.deliveryDate}</span>
-            </div>
+            {paymentPlan.deliveryDate && (
+              <div className={styles.deliveryInfo} style={{ gridColumn: '1 / -1' }}>
+                <h3>Fecha estimada de entrega</h3>
+                <span className={styles.deliveryDate}>{paymentPlan.deliveryDate}</span>
+              </div>
+            )}
           </div>
         </div>
       </section>
