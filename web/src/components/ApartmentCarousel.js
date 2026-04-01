@@ -30,12 +30,13 @@ const ApartmentCarousel = ({ images, title }) => {
                     transition={{ duration: 0.4 }}
                     className={styles.imageWrapper}
                 >
-                    <Image
-                        src={images[currentIndex]}
-                        alt={`${title} - View ${currentIndex + 1}`}
-                        fill
+                    <Image 
+                        src={images[currentIndex]} 
+                        alt={`${title} - View ${currentIndex + 1}`} 
+                        fill 
                         style={{ objectFit: 'cover' }}
                         priority
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 800px"
                     />
                 </motion.div>
             </AnimatePresence>

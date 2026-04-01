@@ -128,6 +128,7 @@ export default function InvestPage() {
               alt="Decoracion"
               fill
               style={{ objectFit: 'cover' }}
+              sizes="(max-width: 1000px) 100vw, 450px"
             />
           </div>
 
