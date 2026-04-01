@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 import styles from './ApartmentCarousel.module.css';
 
 const ApartmentCarousel = ({ images, title }) => {
@@ -23,10 +24,10 @@ const ApartmentCarousel = ({ images, title }) => {
             <AnimatePresence mode='wait'>
                 <motion.div
                     key={currentIndex}
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.5 }}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ duration: 0.4 }}
                     className={styles.imageWrapper}
                 >
                     <Image
@@ -40,15 +41,23 @@ const ApartmentCarousel = ({ images, title }) => {
             </AnimatePresence>
 
             {images.length > 1 && (
-                <div className={styles.dots}>
-                    {images.map((_, idx) => (
-                        <span
-                            key={idx}
-                            className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
-                            onClick={() => setCurrentIndex(idx)}
-                        />
-                    ))}
-                </div>
+                <>
+                    <button className={`${styles.navButton} ${styles.prev}`} onClick={prevSlide} aria-label="Previous image">
+                        <ChevronLeft size={24} />
+                    </button>
+                    <button className={`${styles.navButton} ${styles.next}`} onClick={nextSlide} aria-label="Next image">
+                        <ChevronRight size={24} />
+                    </button>
+                    <div className={styles.dots}>
+                        {images.map((_, idx) => (
+                            <span
+                                key={idx}
+                                className={`${styles.dot} ${idx === currentIndex ? styles.activeDot : ''}`}
+                                onClick={() => setCurrentIndex(idx)}
+                            />
+                        ))}
+                    </div>
+                </>
             )}
         </div>
     );

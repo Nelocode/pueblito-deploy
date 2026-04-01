@@ -17,8 +17,13 @@ const investmentOptions = [
     area: "119 m²",
     rooms: "2+",
     baths: "2.5",
-    // Correct Updated Image for Level 1
-    images: ["/images/apto_nivel_1_new.jpg"],
+    images: [
+      "/images/APARTAMENTO-TIPICO-1.png",
+      "/images/APARTAMENTO-TIPICO-2.png",
+      "/images/APARTAMENTO-TIPICO-3.png",
+      "/images/APARTAMENTO-TIPICO-4.png",
+      "/images/APARTAMENTO-TIPICO-5.png"
+    ],
     colorClass: styles.bgBurgundy
   },
   {
@@ -26,8 +31,12 @@ const investmentOptions = [
     area: "106 – 114 m²",
     rooms: "2 + Salón + Rooftop",
     baths: "2.5",
-    // Correct Updated Image for Level 2
-    images: ["/images/apto_nivel_2_new.jpg"],
+    images: [
+      "/images/APARTAMENTO-TIPICO-NVL2-1-scaled.png",
+      "/images/APARTAMENTO-TIPICO-NVL2-2-scaled.png",
+      "/images/APARTAMENTO-TIPICO-NVL2-3-scaled.png",
+      "/images/APARTAMENTO-TIPICO-NVL2-4-scaled.png"
+    ],
     colorClass: styles.bgNavy
   },
   {
@@ -35,8 +44,12 @@ const investmentOptions = [
     area: "63 – 68 m²",
     rooms: "1 + Salón + Rooftop",
     baths: "1",
-    // Correct Updated Image for Plaza Colon
-    images: ["/images/apto_plaza_colon_rooftop.jpg"],
+    images: [
+      "/images/APARTAMENTO-R-Y-P-1-scaled.png",
+      "/images/APARTAMENTO-R-Y-P-2-scaled.png",
+      "/images/APARTAMENTO-R-Y-P-3-scaled.png",
+      "/images/APARTAMENTO-R-Y-P-4-scaled.png"
+    ],
     colorClass: styles.bgOlive
   }
 ];
